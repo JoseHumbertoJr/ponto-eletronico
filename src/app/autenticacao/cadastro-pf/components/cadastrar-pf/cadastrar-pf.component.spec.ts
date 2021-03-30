@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CadastrarPfComponent } from './cadastrar-pf.component';
+import { CadastrarPfComponent } from './cadastrarPfComponent';
 
 describe('CadastrarPfComponent', () => {
   let component: CadastrarPfComponent;

@@ -1,7 +1,8 @@
-import { CadastrarPfComponent } from './autenticacao/cadastro-pf/components/cadastrar-pf/cadastrar-pf.component';
-import { CadastroPjComponent } from './autenticacao/cadastro-pj/components/cadastro-pj.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
+import { CadastrarPfComponent } from './autenticacao/cadastro-pf/components/cadastrar-pf/cadastrarPfComponent';
+import { CadastroPjComponent } from './autenticacao/cadastro-pj/components/cadastro-pj.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login',pathMatch: 'full'},
