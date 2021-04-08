@@ -1,12 +1,24 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 
+import { HttpUtilService } from './../shared/services/http-util.service';
+import { LancamentoService } from './../shared/services/lancamento.service';
 import { FuncionarioComponent } from './components/funcionario.components';
 import { LancamentoComponent } from './components/lancamento/lancamento.component';
 import { ListagemComponent } from './components/listagem/listagem.component';
-
 
 
 @NgModule({
@@ -17,7 +29,24 @@ import { ListagemComponent } from './components/listagem/listagem.component';
   imports: [
     CommonModule,
     RouterModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatInputModule,
+    MatTooltipModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatCardModule,
+    MatListModule
+  ],
+  providers: [
+    HttpUtilService,
+    LancamentoService
   ]
 })
-export class FuncionarioModule { }
+export class FuncionarioModule {
+
+ }
