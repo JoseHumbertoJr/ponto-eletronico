@@ -31,7 +31,7 @@ import { CadastrarPfComponent } from './components/cadastrar-pf/cadastrarPfCompo
     SharedModule
   ],
   declarations: [
-  	CadastrarPfComponent
+  	CadastrarPfComponent,
   ]
 })
 export class CadastroPfModule { }

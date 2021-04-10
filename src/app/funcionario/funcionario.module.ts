@@ -7,13 +7,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 
+import { PtBrMatPagination } from '../shared/pt-br-mat-paginator';
+import { SharedModule } from '../shared/shared.module';
 import { HttpUtilService } from './../shared/services/http-util.service';
 import { LancamentoService } from './../shared/services/lancamento.service';
 import { FuncionarioComponent } from './components/funcionario.components';
@@ -40,11 +42,13 @@ import { ListagemComponent } from './components/listagem/listagem.component';
     MatPaginatorModule,
     MatSortModule,
     MatCardModule,
-    MatListModule
+    MatListModule,
+    SharedModule
   ],
   providers: [
     HttpUtilService,
-    LancamentoService
+    LancamentoService,
+    {provide: MatPaginatorIntl, useClass: PtBrMatPagination}
   ]
 })
 export class FuncionarioModule {
