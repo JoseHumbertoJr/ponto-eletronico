@@ -1,0 +1,29 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { environment } from 'src/environments/environment';
+
+import { HttpUtilService } from './http-util.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FuncionarioService {
+
+  private readonly PATH: string = 'funcionarios';
+  private readonly PATH_FUNC_POR_EMPRESA = '/empresa/{empresaId}';
+
+  constructor(
+    private http: HttpClient,
+    private httpUtil: HttpUtilService
+  ) { }
+
+  listarFuncionariosPorEmpresa(): Observable<any>{
+    return this.http.get(
+      environment.baseApiUrl + this.PATH +
+        this.PATH_FUNC_POR_EMPRESA.replace(
+        '{empresaId}', this.httpUtil.obterIdEmpresa()),
+      this.httpUtil.headers()
+    );
+  }
+}

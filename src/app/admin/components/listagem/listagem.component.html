@@ -1,7 +1,21 @@
+<form [formGroup]="form" novalidate>
+  <mat-form-field>
+    <mat-select placeholder="Funcionários"
+      formControlName="funcs" [(value)]="funcionarioId"
+      (selectionChange)="exibirLancamentos()">
+      <mat-option *ngFor="let funcionario of funcionarios"
+        [value]="funcionario.id">
+          {{funcionario.nome}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
 <a mat-button color="warn" routerLink="/admin/cadastro"
   *ngIf="funcionarioId">
   Adicionar Lançamento
 </a>
+
 <mat-table #table [dataSource]="dataSource" matSort (matSortChange)="ordenar($event)">
 
   <ng-container matColumnDef="data">
@@ -33,9 +47,9 @@
   <ng-container matColumnDef="acao">
     <mat-header-cell *matHeaderCellDef>Ação</mat-header-cell>
     <mat-cell *matCellDef="let lancamento">
-      <a routerLink="{{'admin/atualizacao/'+ lancamento.id}}">
-      <mat-icon matTooltip="Editar lançamento">Create</mat-icon></a>
-      <a (click)="remover(lancamento.id)"
+      <a routerLink="{{'atualizacao/'+ lancamento.id}}">
+      <mat-icon matTooltip="Editar lançamento">create</mat-icon></a>
+      <a (click)="removerDialog(lancamento.id)"
       style="cursor: pointer;">
       <mat-icon matTooltip="Remover lançamento">clear</mat-icon>
       </a>
@@ -43,11 +57,11 @@
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
-  <mat-row *matRowDef="let row; columns:"></mat-row>
+  <mat-row *matRowDef="let row; columns:colunas;"></mat-row>
 
 </mat-table>
 <mat-paginator
   [length]="totalLancamentos"
-  [pageSize]="10"
+  [pageSize]="25"
   (page)="paginar($event)">
 </mat-paginator>

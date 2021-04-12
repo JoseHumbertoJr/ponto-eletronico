@@ -49,8 +49,30 @@ export class LancamentoService {
     ordem: string, direcao: string): Observable<any>{
       const url: string = env.baseApiUrl + this.PATH +
       this.PATH_LANCAMENTOS.replace('{funcionarioId}', funcionarioId);
+
       const params: string = '?pag='+pagina+'&ord='+ordem+'&dir='+direcao;
 
       return this.http.get(url+params, this.httpUtil.headers());
+    }
+
+    remover(lancamentoId: string): Observable<any>{
+      return this.http.delete(
+        env.baseApiUrl + this.PATH + '/' + lancamentoId,
+        this.httpUtil.headers()
+      );
+    }
+
+    buscarPorId(lancamentoId: string): Observable<any>{
+      return this.http.get(
+        env.baseApiUrl + this.PATH + '/' + lancamentoId,
+        this.httpUtil.headers()
+      );
+    }
+
+    atualizar(lancamento: Lancamento): Observable<any>{
+      return this.http.put(
+        env.baseApiUrl + this.PATH + '/' + lancamento.id,
+        lancamento,this.httpUtil.headers()
+      );
     }
 }
